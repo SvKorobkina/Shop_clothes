@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Редактирование статуса</title>
+</head>
+<body style="background: #c4b3ef; margin: 30px">
+<div style="max-width: 600px">
+<form th:method="POST" th:action="@{/admin/orders/{id}(id=${info_order.getId()})}" th:object="${info_order}">
+
+  <div th:each="order:${info_order}">
+    <p th:text="${info_order.getNumber()}"></p>
+    <p th:text="${info_order.getStatus()}"></p>
+
+    <label for="status" >Выберите статус: </label>
+    <select id="status" name="status">
+      <option th:each="state : ${T(com.example.springsecurityapplication.enumm.Status).values()}"
+              th:value="${state}" th:text="${state}"></option>
+    </select>
+<!--    <a class="label"  href="/admin/orders" style="width:100%;">Просмотр</a>-->
+    <button type="submit">Редактировать</button>
+    <p th:text="${info_order.getProduct().getTitle()}"></p>
+  </div>
+
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Пользователи</title>
+  <link th:href="@{/CSS/forgot.css}" type="text/css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+</head>
+<h3>Список пользователей</h3>
+<body style="background: #c4b3ef; margin: 30px">
+<div th:each="element : ${person}">
+<!--  <ul class="older">-->
+<!--    <li><a th:href="@{/admin/person/info/{id}(id=${element.getId()})}" th:text="${element.getLogin()}>Элемент списка</a></li>-->
+<!--  </ul>-->
+
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" th:href="@{/admin/person/info/{id}(id=${element.getId()})}" th:text="${element.getLogin()}"></a>
+  </li>
+<!--  <a th:href="@{/admin/person/info/{id}(id=${element.getId()})}" th:text="${element.getLogin()}"></a>-->
+</div>
+
+</body>
+</html>

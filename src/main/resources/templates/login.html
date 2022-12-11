@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link th:href="@{/CSS/style.css}" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+    <form method="post" action="/process_login">
+<div class="mytext"> <h2>Авторизация</h2>
+
+</div>
+        <label for="username">Введите логин: </label>
+        <input style="width:100%;" type="hidden" th:name="${_csrf.parameterName}" placeholder="Логин" th:value="${_csrf.token}">
+        <input style="width:100%;" type="text" placeholder="Введите логин" name="username" id="username">
+
+        <label for="password">Введите пароль: </label>
+            <input style="width:100%;" type="password" placeholder="Введите пароль" name="password" id="password">
+
+        <input style="width:100%;" type="submit" value="Войти">
+        <div th:if="${param.error}" style="color: red">
+           Неправильный логин или пароль
+        </div>
+
+</form>
+<div class="social">
+<a class="label" href="/auth/registration">Регистрация</a>
+    <a class="label"  href="/auth/password/change" style="width:500%;" type="submit" value="Изменить пароль">Изменить пароль</a>
+    <a class="label"  href="/product" style="width:100%;">Просмотр товаров</a>
+</div>
+</body>
+
+
+</html>

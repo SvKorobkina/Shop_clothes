@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ панель</title>
+    <link th:href="@{/CSS/cards.css}" type="text/css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+   </head>
+<body style="background: linear-gradient(to bottom, #c4b3ef 0%, #eeb08a 100%)">
+<h3>Личный кабинет администратора</h3>
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Выйти из личного кабинета">
+</form>
+<!--<div>-->
+<!--<button type="button" style=" display: flex; justify-content: center;" href="/admin/product/add" class="btn btn-primary btn-lg">Добавить товар</button>-->
+<!--</div>-->
+<ul style="display: flex; justify-content: center" class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/admin/product/add">Добавить товар</a>
+    </li>
+</ul>
+<div>
+<!--    <h3>Пользователи:</h3>-->
+<!--    <div th:each="person : ${persons}">-->
+
+<!--        <p th:text="'Логин: ' + ${person.getLogin()}"></p>-->
+
+<!--        <form method="get" th:action="@{/auth/password/changepersonal}">-->
+<!--            <input type="submit" value="Изменить свой пароль (Personal)">-->
+<!--        </form>-->
+        <br>
+    <ul style="display: flex; justify-content: center" class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/admin/person">ПОЛЬЗОВАТЕЛИ</a>
+        </li>
+    </ul>
+<!--        <a href="/admin/person">Пользователи</a>-->
+        <br>
+    <ul style="display: flex; justify-content: center" class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/admin/orders">ЗАКАЗЫ</a>
+        </li>
+    </ul>
+
+<!--    <input-->
+<!--            type="button"-->
+<!--            value="Список заказов"-->
+<!--            onclick="location.href='/admin/product/orderList'"-->
+<!--    >-->
+
+<!--        <label for="role">Выберите статус товара: </label>-->
+<!--        <select name="role" th:field="*{person.getRole()}" id="role">-->
+<!--            <div th:each="element : ${person.getRole()}">-->
+<!--                <option th:text="${element.getRole()}" th:value="${element.getRole()}"></option>-->
+<!--            </div>-->
+<!--        </select>-->
+        <!--        <p th:text="'Роль: ' + ${person.getRole().getName()}"></p>-->
+
+        <!--  <p th:text="'Состояние: ' + ${person.getStatus()}"></p>-->
+
+        <!--        <a th:href="@{/admin/product/usersList/editUser/{id}(id=${person.getId()})}">Редактировать пользователя</a>-->
+        <!--        <a th:href="@{/admin/product/usersList/deleteUser/{id}(id=${person.getId()})}">Удалить пользователя</a>-->
+        <hr>
+    </div>
+</div>
+
+<!--        method="get" th:action="@{/orders}">-->
+<!--    <input type="submit" value="Заказы">-->
+<h3 style="display: flex; justify-content: center">Каталог товаров: </h3>
+<hr>
+<div class="container1">
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        <div style="justify-content: center"  th:each="product : ${products}">
+            <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px" alt="...">
+            <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+            <div class="card-body">
+                <textarea th:text="'Описание: ' + ${product.getDescription()}"></textarea>
+                <p class="price" th:text="'Цена: ' + ${product.getPrice()}"></p>
+                <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+                <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+                <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
+                    </li>
+                </ul>
+                <br>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+                    </li>
+                </ul>
+                <!--            <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>-->
+                <!--            <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link th:href="@{/CSS/style.css}" type="text/css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <!--Stylesheet-->
+</head>
+<body>
+<a style="padding:20px" class="label" href="/auth/login">Назад</a>
+
+<div>
+  <form method="post" th:action="@{/auth/registration}" th:object="${person}">
+    <div class="setting2">
+  <label for="login">Введите логин: </label>
+  <input style="width:100%;"type="text" th:field="*{login}" placeholder="Введите логин" name="username" id="login">
+  <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+  <br>
+  <label for="password">Введите пароль: </label>
+  <input style="width:100%;" type="password"  th:field="*{password}" placeholder="Введите пароль" name="password" id="password">
+  <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+  <br>
+  <input style="width:100%;" type="submit" value="Зарегистрироваться">
+         </div>
+
+</form>
+
+</div>
+<br>
+<div class="body2">
+<div class="container d-flex justify-content-center ">
+  <div class="bg-light p-4">
+    <div class="mytext" style="padding:43px">
+    <h2>Генератор надежных паролей</h2></div>
+    <div class="result-container bg-info">
+      <span id="result"></span>
+      <button class="btn btn-warning" id="clipboard">
+        <i class="far fa-clipboard"></i>
+      </button>
+    </div>
+    <div class="settings">
+      <div class="setting">
+        <label>Длинна пароля от 6 до 10</label>
+        <input type="number" id="length" min='6' max='10' value='10' />
+      </div>
+      <div class="setting">
+        <label>Добавить верхний регистр</label>
+        <input type="checkbox" id="uppercase" checked />
+      </div>
+      <div class="setting">
+        <label>Добавить нижний регистр</label>
+        <input type="checkbox" id="lowercase" checked />
+      </div>
+      <div class="setting">
+        <label>Добавить цифры</label>
+        <input type="checkbox" id="numbers" checked />
+      </div>
+      <div class="setting">
+        <label>Добавить символы</label>
+        <input type="checkbox" id="symbols" checked />
+      </div>
+    </div>
+    <button class="btn btn-large btn-danger" id="generate">
+      Сгенерировать пароль
+    </button>
+  </div>
+</div>
+</div>
+
+<script th:src="@{/JS/index.js}"></script>
+
+</body>
+</html>
